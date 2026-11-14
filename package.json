@@ -1,0 +1,19 @@
+{
+  "name": "youtube-live-extension",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Chrome extension: floating YouTube button showing which of your watchlisted channels are live.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,css,json}\" build.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "esbuild": "^0.24.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  }
+}
