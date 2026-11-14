@@ -50,3 +50,7 @@ tab manually.
 - Detection is a heuristic on YouTube's HTML; if it breaks, adjust `LIVE_COUNT` / regexes in
   `detect.ts` first.
 - Keep the version in `src/manifest.json` and `package.json` in sync when bumping.
+- `"key"` in `src/manifest.json` pins the extension ID to `dopependhfjcpnffdceadmaebaonjkip`
+  regardless of load path. `chrome.storage` (incl. sync across devices) is scoped to that ID —
+  never remove or change the key, or every user's saved watchlist disappears. The matching private
+  key is `key.pem` (git-ignored, only needed to pack a .crx).

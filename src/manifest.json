@@ -3,6 +3,7 @@
   "name": "YouTube Live Watchlist",
   "version": "2.0.0",
   "description": "Floating bottom-left button that shows which of your manually-followed YouTube channels are live. Checks only when you open YouTube. No API key, no background polling.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwZjehDdtHNEcQHJ3aKzI0ndhEAxVx3o2pjFxBckEpBY/zsuBGzON1/eWX7JkHMwMHOojr3wUUVj+WlsrfY+fxZeTBfC+uhJVGlOz8Rt5RYo4mNSXGitcFdoZdFOakDovbOA3ieKVWr+JrqLhZHk2bYpAJbF+6fvqsywZfq5ZGUmqAeSUHzqMXdFehctv/ApjQ09A7NXp1g85GEc6KYyv7wGhu8DSo7fYHeopNJ52wpNEOdwMsCSfTnFqb6AiY2XqjzRii08sNEZGqSJgq6WVZMAmSTgOcOc/RJ6oJbWYCXDOt6ssENgIazg0+QcuIc/jNO3/Xyqpl/rutwpThYHIiQIDAQAB",
   "permissions": ["storage"],
   "content_scripts": [
     {

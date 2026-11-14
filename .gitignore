@@ -150,3 +150,6 @@ vite.config.ts.timestamp-*
 
 # Packed extension
 *.zip
+
+# Extension private key (pins the extension ID; never commit)
+key.pem

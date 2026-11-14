@@ -69,6 +69,11 @@ npm run build      # or: npm run watch  (rebuilds on save)
 3. Click **Load unpacked** and select the **`dist/`** folder.
 4. Open/refresh `https://www.youtube.com`; the 📡 button appears bottom-left.
 
+The manifest has a fixed `"key"`, so the extension ID is always
+`dopependhfjcpnffdceadmaebaonjkip` no matter which folder or machine you load it
+from — that's what lets `chrome.storage.sync` share the watchlist across devices
+(same Chrome profile, extension sync on).
+
 After rebuilding, click the extension's reload ↻ on `chrome://extensions` and
 refresh the YouTube tab.
 
