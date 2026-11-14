@@ -9,8 +9,8 @@ on manual Refresh.
 
 ```sh
 npm install
-npm run build       # src/ → dist/ (load dist/ via chrome://extensions → Load unpacked)
-npm run watch       # rebuild on change (inline sourcemaps)
+npm run build       # src/ → dist/youtube-live/ (Load unpacked this) + dist/youtube-live.zip
+npm run watch       # rebuild dist/youtube-live/ on change (inline sourcemaps, no zip)
 npm run typecheck   # tsc --noEmit (strict)
 npm run format      # prettier (see .prettierrc: no semicolons, single quotes, width 100)
 ```
@@ -29,13 +29,15 @@ tab manually.
 - `src/storage.ts` — promise wrappers over `chrome.storage` callbacks; `idOf`/`urlFromId`;
   `buildWatchlist` merges synced ids with local detail.
 - `src/config.ts` — `CONFIG` knobs (keys, `LIVE_COUNT`, `CONCURRENCY`, `REFRESH_TTL_MS`, `DEBUG`).
-- `src/manifest.json`, `src/styles.css` — copied verbatim to `dist/` by `build.mjs`.
+- `src/manifest.json`, `src/styles.css` — copied verbatim into the output by `build.mjs`.
 - `example.js` (root) — reference only, not built or shipped.
 
 ## Conventions & gotchas
 
-- Content scripts are classic scripts: esbuild bundles to a single **IIFE** `dist/content.js`. Don't
-  add more entry points without adding them to both `build.mjs` and `src/manifest.json`.
+- Content scripts are classic scripts: esbuild bundles to a single **IIFE**
+  `dist/youtube-live/content.js`. Don't add more entry points without adding them to both
+  `build.mjs` and `src/manifest.json`. New static files must be added to `STATIC` in `build.mjs`
+  (the zip is built flat from the output folder — no subfolders).
 - **Storage split:** `chrome.storage.sync` holds _only_ the channel id list (`yls_channels`) —
   membership, tiny, rarely written. Everything else (entries with names, results cache,
   last-refresh) goes to `chrome.storage.local`. Keep frequently-written data out of sync (8 KB/item

@@ -57,7 +57,8 @@ re-check).
 
 ## Build & install (load unpacked)
 
-The source is TypeScript in `src/`; it's bundled with esbuild into `dist/`.
+The source is TypeScript in `src/`; it's bundled with esbuild into
+`dist/youtube-live/` (unpacked extension) and `dist/youtube-live.zip` (same files, zipped).
 
 ```sh
 npm install
@@ -66,7 +67,7 @@ npm run build      # or: npm run watch  (rebuilds on save)
 
 1. Open `chrome://extensions`.
 2. Toggle **Developer mode** on (top-right).
-3. Click **Load unpacked** and select the **`dist/`** folder.
+3. Click **Load unpacked** and select the **`dist/youtube-live/`** folder.
 4. Open/refresh `https://www.youtube.com`; the 📡 button appears bottom-left.
 
 The manifest has a fixed `"key"`, so the extension ID is always
@@ -111,16 +112,16 @@ Limitations to be aware of:
 
 ```
 src/
-  manifest.json   # MV3; one content script + "storage" permission (copied to dist/)
-  styles.css      # button + panel + management UI styling (copied to dist/)
+  manifest.json   # MV3; one content script + "storage" permission (copied to output)
+  styles.css      # button + panel + management UI styling (copied to output)
   content.ts      # entry: state, checkAll, add/remove, floating button + panel, init
   config.ts       # CONFIG knobs + log/warn
   detect.ts       # /live fetch + "isLive" count, name/avatar extraction
   channel.ts      # parse user input (@handle / URL / UC… id) into a channel URL
   storage.ts      # chrome.storage sync/local wrappers, id <-> url helpers
   types.ts        # shared types
-build.mjs         # esbuild: src/content.ts → dist/content.js (IIFE) + copy static files
-dist/             # build output — load this in Chrome (git-ignored)
+build.mjs         # esbuild: src/content.ts → dist/youtube-live/content.js (IIFE), copy static files, zip
+dist/             # build output (git-ignored): youtube-live/ (load this) + youtube-live.zip
 ```
 
 > `example.js` is a reference file (another extension's background-script
